@@ -2,6 +2,39 @@
 
 This document lists all constraints and validation rules for Akash SDL configurations.
 
+## Image Tag Constraints
+
+**Docker images must specify an explicit tag.** The `latest` tag is not allowed.
+
+```yaml
+# Valid - explicit version tag
+services:
+  web:
+    image: nginx:1.25.3
+
+# Valid - semantic version
+services:
+  app:
+    image: node:18-alpine
+
+# Valid - SHA digest
+services:
+  api:
+    image: myapp@sha256:abc123...
+
+# Invalid - latest tag
+services:
+  web:
+    image: nginx:latest    # Error: 'latest' tag not allowed
+
+# Invalid - no tag (implies latest)
+services:
+  web:
+    image: nginx           # Error: must specify explicit tag
+```
+
+**Why?** The `latest` tag is mutable and can change unexpectedly, causing deployment inconsistencies. Explicit tags ensure reproducible deployments.
+
 ## Port Constraints
 
 | Field | Valid Range | Notes |
@@ -241,7 +274,7 @@ Services in `deployment` must exist in `services`:
 ```yaml
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
 
 deployment:
   web:                  # Valid: matches 'web' in services
@@ -356,6 +389,7 @@ deployment:
 
 | Constraint | Rule |
 |------------|------|
+| Image tag | Must be explicit, `latest` not allowed |
 | Port range | 1-65535 |
 | Timeout range | 0-60000ms |
 | Body size | 0-104857600 bytes (100MB) |

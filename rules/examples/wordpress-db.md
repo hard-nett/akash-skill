@@ -16,7 +16,7 @@ version: "2.0"
 
 services:
   wordpress:
-    image: wordpress:latest
+    image: wordpress:6.4
     env:
       - "WORDPRESS_DB_HOST=db"
       - "WORDPRESS_DB_USER=wordpress"
@@ -148,7 +148,7 @@ version: "2.0"
 
 services:
   wordpress:
-    image: wordpress:latest
+    image: wordpress:6.4
     env:
       - "WORDPRESS_DB_HOST=db"
       - "WORDPRESS_DB_USER=wordpress"
@@ -263,7 +263,7 @@ version: "2.0"
 
 services:
   app:
-    image: myapp:latest
+    image: myapp:v1.0.0
     env:
       - "DATABASE_URL=postgres://appuser:apppassword@db:5432/appdb"
     expose:

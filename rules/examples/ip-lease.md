@@ -24,7 +24,7 @@ version: "2.1"
 
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         as: 80
@@ -71,7 +71,7 @@ version: "2.1"
 
 services:
   gameserver:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java21
     env:
       - "EULA=TRUE"
       - "TYPE=PAPER"
@@ -134,7 +134,7 @@ version: "2.1"
 
 services:
   dev:
-    image: lscr.io/linuxserver/openssh-server:latest
+    image: lscr.io/linuxserver/openssh-server:9.6_p1
     env:
       - "PUID=1000"
       - "PGID=1000"
@@ -190,7 +190,7 @@ version: "2.1"
 
 services:
   frontend:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         as: 80
@@ -202,7 +202,7 @@ services:
           - ip: frontend-ip
 
   api:
-    image: myapi:latest
+    image: myapi:v1.0.0
     expose:
       - port: 8080
         as: 80
@@ -267,7 +267,7 @@ version: "2.1"
 
 services:
   mail:
-    image: mailserver/docker-mailserver:latest
+    image: mailserver/docker-mailserver:13.3.1
     env:
       - "OVERRIDE_HOSTNAME=mail.example.com"
       - "ENABLE_SPAMASSASSIN=1"
@@ -342,7 +342,7 @@ version: "2.1"
 
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       # Default Akash hostname (HTTPS with auto-cert)
       - port: 80

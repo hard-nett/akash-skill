@@ -36,7 +36,7 @@ version: "2.1"
 
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         as: 80
@@ -91,7 +91,7 @@ You can expose multiple ports through the same IP endpoint:
 ```yaml
 services:
   app:
-    image: myapp:latest
+    image: myapp:v1.0.0
     expose:
       - port: 80
         as: 80
@@ -121,14 +121,14 @@ version: "2.1"
 
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         to:
           - ip: web-ip
 
   api:
-    image: myapi:latest
+    image: myapi:v1.0.0
     expose:
       - port: 8080
         as: 80
@@ -188,7 +188,7 @@ You can expose a service both via the default Akash hostname and a dedicated IP:
 ```yaml
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         as: 80

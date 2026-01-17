@@ -63,7 +63,7 @@ version: "2.0"
 
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80
         to:
@@ -100,14 +100,14 @@ version: "2.0"
 
 services:
   frontend:
-    image: myapp/frontend:latest
+    image: myapp/frontend:v1.0.0
     expose:
       - port: 80
         to:
           - global: true
 
   backend:
-    image: myapp/backend:latest
+    image: myapp/backend:v1.0.0
     expose:
       - port: 8080
         to:

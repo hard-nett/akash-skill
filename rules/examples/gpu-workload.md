@@ -326,7 +326,7 @@ version: "2.0"
 
 services:
   sd:
-    image: stability-ai/stablediffusion:latest
+    image: stability-ai/stablediffusion:v2.1
     expose:
       - port: 7860
         as: 7860

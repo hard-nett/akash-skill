@@ -18,13 +18,21 @@ services:
 
 ### image (required)
 
-The container image to deploy:
+The container image to deploy. **Must include an explicit tag** - the `latest` tag is not allowed.
 
 ```yaml
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3       # Explicit version tag
+
+  app:
+    image: node:18-alpine     # Version with variant
+
+  api:
+    image: myapp:v1.2.0       # Semantic version
 ```
+
+**Important:** Do not use `:latest` or omit the tag. Akash requires explicit tags for reproducible deployments.
 
 ### command (optional)
 
@@ -46,7 +54,7 @@ Arguments passed to the command:
 ```yaml
 services:
   app:
-    image: myapp:latest
+    image: myapp:v1.0.0
     args:
       - "--config"
       - "/etc/config.yaml"
@@ -59,7 +67,7 @@ Environment variables as an array of strings:
 ```yaml
 services:
   app:
-    image: myapp:latest
+    image: myapp:v1.0.0
     env:
       - "NODE_ENV=production"
       - "DATABASE_URL=postgres://user:pass@db:5432/mydb"
@@ -73,7 +81,7 @@ Port exposure configuration:
 ```yaml
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     expose:
       - port: 80        # Container port (1-65535)
         as: 80          # External port (optional, defaults to port)
@@ -136,7 +144,7 @@ For private container registries:
 ```yaml
 services:
   app:
-    image: registry.example.com/myapp:latest
+    image: registry.example.com/myapp:v1.0.0
     credentials:
       host: registry.example.com
       username: myuser
@@ -167,7 +175,7 @@ Services can communicate using their service names as hostnames:
 ```yaml
 services:
   web:
-    image: nginx:latest
+    image: nginx:1.25.3
     env:
       - "API_URL=http://api:3000"
     expose:
@@ -176,7 +184,7 @@ services:
           - global: true
 
   api:
-    image: myapi:latest
+    image: myapi:v1.0.0
     expose:
       - port: 3000
         to:
