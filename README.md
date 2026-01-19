@@ -29,6 +29,30 @@ Once installed, Claude will automatically use this skill when you ask it to:
 > Generate SDL for a game server with a dedicated IP
 ```
 
+## Usage by Agent
+
+This skill can be used with various AI coding assistants:
+
+### Claude Code
+```bash
+claude skill add https://github.com/akash-network/akash-sdl-skill
+```
+
+### Cursor
+Copy the contents of the `rules/` directory to your project's `.cursorrules` file or add as project rules in Cursor settings.
+
+### Windsurf
+Add the rules content to Cascade rules or memory for persistent context.
+
+### Cline
+Add as custom instructions in Cline extension settings.
+
+### Codex / OpenCode
+Include the rules as system prompt context when initializing your session.
+
+### Generic Integration
+For other AI assistants or custom setups, reference the [`rules/`](./rules/) directory directly. Each markdown file contains structured guidelines that can be adapted to any LLM's instruction format.
+
 ## What's Included
 
 ### Rules
