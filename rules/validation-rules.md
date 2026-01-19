@@ -297,6 +297,24 @@ deployment:
       count: 1
 ```
 
+### Dependencies
+
+Service dependencies must reference existing services:
+
+```yaml
+services:
+  api:
+    image: myapp:v1.0.0
+    dependencies:
+      - service: database    # Valid: 'database' exists
+      - service: cache       # Error if 'cache' not defined
+
+  database:
+    image: postgres:15
+```
+
+Circular dependencies should be avoided to prevent startup deadlocks.
+
 ### Profile Names
 
 Profiles in `deployment` must exist in `profiles.compute`:
@@ -412,4 +430,5 @@ deployment:
 | GPU with units = 0 | Cannot have attributes |
 | Endpoints | Must be global, must be used, requires v2.1 |
 | Deployment count | Minimum 1 |
+| Dependencies | Must reference existing services |
 | References | All names must match across sections |

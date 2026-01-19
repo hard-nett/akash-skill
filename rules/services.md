@@ -171,6 +171,39 @@ services:
 
 The storage name (`data` in the example) must match a named storage volume in the compute profile.
 
+### dependencies (optional)
+
+Declare service startup dependencies. The service will wait for dependent services to be ready before starting:
+
+```yaml
+services:
+  api:
+    image: myapp:v1.0.0
+    dependencies:
+      - service: database
+      - service: cache
+    expose:
+      - port: 3000
+        to:
+          - global: true
+
+  database:
+    image: postgres:15
+    expose:
+      - port: 5432
+        to:
+          - service: api
+
+  cache:
+    image: redis:7
+    expose:
+      - port: 6379
+        to:
+          - service: api
+```
+
+**Note:** Dependencies control startup order. For network access, you must also expose ports using the `to: - service: <name>` directive.
+
 ## Service-to-Service Communication
 
 Services can communicate using their service names as hostnames:
