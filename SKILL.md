@@ -12,6 +12,21 @@ metadata:
 
 Generate valid Akash Network Stack Definition Language (SDL) configurations for deploying containerized applications on the decentralized cloud.
 
+## Critical Rules
+
+**NEVER use `:latest` or omit image tags.** Always specify explicit version tags for reproducible deployments.
+
+```yaml
+# CORRECT
+image: nginx:1.25.3
+image: node:20-alpine
+image: postgres:16
+
+# WRONG - will cause deployment issues
+image: nginx:latest
+image: nginx          # implies :latest
+```
+
 ## SDL Structure Overview
 
 Every SDL file has four required sections:
