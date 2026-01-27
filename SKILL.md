@@ -1,16 +1,32 @@
 ---
-name: akash-sdl
-description: Generate valid Akash Network SDL configurations for deploying containers on the decentralized cloud. Use when asked to "create Akash deployment", "generate SDL", "deploy to Akash", or "Akash config".
+name: akash
+description: >
+  Comprehensive Akash Network skill for deployers, providers, and node operators.
+  Covers SDL generation, CLI deployments, Console API, TypeScript/Go SDKs,
+  provider setup, and validator operations. Use for "deploy to Akash",
+  "generate SDL", "Akash provider", "Akash CLI", "Akash SDK", or "Akash validator".
 license: MIT
 metadata:
   author: baktun14
-  version: "1.0.0"
-  argument-hint: <deployment-description>
+  version: "2.0.0"
+  argument-hint: <task-description>
 ---
 
-# Akash SDL Generator
+# Akash Network Skill
 
-Generate valid Akash Network Stack Definition Language (SDL) configurations for deploying containerized applications on the decentralized cloud.
+Comprehensive skill for working with the Akash Network - the decentralized cloud computing marketplace.
+
+## Capabilities
+
+This skill covers all aspects of the Akash Network:
+
+| Area | Description |
+|------|-------------|
+| **SDL Generation** | Create valid Stack Definition Language configurations |
+| **Deployments** | Deploy via CLI, Console API, or SDKs |
+| **Provider Operations** | Set up and manage Akash providers |
+| **Node Operations** | Run full nodes and validators |
+| **SDK Integration** | TypeScript and Go SDK usage |
 
 ## Critical Rules
 
@@ -27,7 +43,9 @@ image: nginx:latest
 image: nginx          # implies :latest
 ```
 
-## SDL Structure Overview
+## Quick Reference
+
+### SDL Structure
 
 Every SDL file has four required sections:
 
@@ -43,8 +61,6 @@ Optional section for IP endpoints:
 ```yaml
 endpoints:      # IP lease endpoints (requires version 2.1)
 ```
-
-## Quick Reference
 
 ### Minimal SDL Template
 
@@ -84,28 +100,58 @@ deployment:
       count: 1
 ```
 
-## Detailed Rules
+## Documentation Structure
 
-For complete configuration options, see the rules directory:
+### Core Concepts
+- **@overview.md** - Akash Network introduction and architecture
+- **@terminology.md** - Key terms (lease, bid, dseq, gseq, oseq)
+- **@pricing.md** - Payment with uakt, USDC, IBC denoms
 
-- **@schema-overview.md** - Version requirements and SDL structure
-- **@services.md** - Service configuration (image, expose, env, credentials)
-- **@compute-resources.md** - CPU, memory, storage, and GPU specifications
-- **@placement-pricing.md** - Provider selection and pricing configuration
-- **@deployment.md** - Service-to-profile deployment mapping
-- **@endpoints.md** - IP endpoint configuration (v2.1)
-- **@validation-rules.md** - All constraints and validation rules
+### SDL Configuration
+- **@sdl/schema-overview.md** - Version requirements and SDL structure
+- **@sdl/services.md** - Service configuration (image, expose, env, credentials)
+- **@sdl/compute-resources.md** - CPU, memory, storage, and GPU specifications
+- **@sdl/placement-pricing.md** - Provider selection and pricing (uakt/USDC)
+- **@sdl/deployment.md** - Service-to-profile mapping
+- **@sdl/endpoints.md** - IP endpoint configuration (v2.1)
+- **@sdl/validation-rules.md** - All constraints and validation rules
 
-## Examples
+### SDL Examples
+- **@sdl/examples/web-app.md** - Simple web deployment
+- **@sdl/examples/wordpress-db.md** - Multi-service with persistent storage
+- **@sdl/examples/gpu-workload.md** - GPU deployment with NVIDIA
+- **@sdl/examples/ip-lease.md** - IP endpoint configuration
 
-See the examples directory for complete working configurations:
+### Deployment Methods
+- **@deploy/overview.md** - Comparison of deployment options
+- **@deploy/cli/** - Akash CLI installation and usage
+- **@deploy/console-api/** - Console API for programmatic deployments
+- **@deploy/certificates/** - Authentication methods (JWT, mTLS)
 
-- **@examples/web-app.md** - Simple web deployment
-- **@examples/wordpress-db.md** - Multi-service with persistent storage
-- **@examples/gpu-workload.md** - GPU deployment with NVIDIA
-- **@examples/ip-lease.md** - IP endpoint configuration
+### SDK Documentation
+- **@sdk/overview.md** - SDK comparison and selection
+- **@sdk/typescript/** - TypeScript SDK for web and Node.js
+- **@sdk/go/** - Go SDK for backend services
 
-For 100+ production-ready templates, see [awesome-akash](https://github.com/akash-network/awesome-akash).
+### AuthZ (Delegated Permissions)
+- **@authz/** - Fee grants and deployment authorization
+
+### Provider Operations
+- **@provider/overview.md** - Provider requirements and setup
+- **@provider/setup/** - Kubernetes and provider installation
+- **@provider/configuration/** - Attributes, pricing, bid engine
+- **@provider/operations/** - Monitoring and troubleshooting
+
+### Node Operations
+- **@node/overview.md** - Running Akash nodes
+- **@node/full-node/** - Full node setup and state sync
+- **@node/validator/** - Validator operations and security
+
+### Reference
+- **@reference/storage-classes.md** - beta2, beta3, ram storage
+- **@reference/gpu-models.md** - Supported NVIDIA GPUs
+- **@reference/ibc-denoms.md** - Payment denominations
+- **@reference/rpc-endpoints.md** - Public RPC endpoints
 
 ## Common Patterns
 
@@ -151,5 +197,8 @@ profiles:
 
 ## Additional Resources
 
-- **[awesome-akash](https://github.com/akash-network/awesome-akash)** - Community-curated library of production-ready SDL templates for databases, AI/ML, gaming, web apps, and more
-- **[chain-sdk](https://github.com/akash-network/chain-sdk/tree/main/ts/src/sdl)** - Official SDL schema and validation reference
+- **[awesome-akash](https://github.com/akash-network/awesome-akash)** - 100+ production-ready SDL templates
+- **[Akash Network Docs](https://akash.network/docs/)** - Official documentation
+- **[Console](https://console.akash.network)** - Web-based deployment interface
+- **[Console API](https://console-api.akash.network/v1/swagger)** - REST API documentation
+- **[chain-sdk](https://github.com/akash-network/chain-sdk)** - Official TypeScript SDK
